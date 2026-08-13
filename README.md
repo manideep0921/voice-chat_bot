@@ -1,95 +1,43 @@
+# Voice-Activated Chatbot
 
+A Python voice assistant. Listens for a spoken command, transcribes it with Google's speech recognition API, and responds with synthesized speech.
 
----
+## Features
 
-### 📄 Voice-Activated AI Chatbot
-
-````
-# Voice-Activated AI Chatbot
-
-## 📌 Project Overview
-This is a Python-based voice-activated chatbot that listens to your voice, understands commands, and responds with speech. It can search Wikipedia, open Google, tell the current time, take notes, and even execute system-level commands like shutdown or restart.
-
----
-
-## ✅ Features
-
-- Voice recognition using `SpeechRecognition`
-- Speech output using `pyttsx3`
-- Wikipedia search with `wikipedia-api`
-- Opens web pages like Google
+- Voice input via microphone (`speech_recognition`) and voice output (`pyttsx3`)
+- Wikipedia lookups
+- Opens web pages (e.g. "open Google")
 - Tells the current time
-- Writes notes to a text file
-- Shutdown and restart commands
-- Greets user based on time of day
-- Error handling for unrecognized commands
+- Saves spoken notes to a text file
+- Shutdown/restart commands
+- Time-of-day greeting on startup
 
----
+## Tech Stack
 
-## 🧠 Technologies Used
+Python, `speech_recognition` (Google Speech API backend), `pyttsx3` (offline TTS), `wikipedia-api`, `pyaudio`.
 
-- Python 3.8+
-- speech_recognition
-- pyttsx3
-- wikipedia-api
-- pyaudio
-- Standard libraries: `datetime`, `os`, `webbrowser`, etc.
+## Setup
 
----
-
-## 🔧 Setup Instructions
-
-### 1. Create and activate a virtual environment (optional but recommended)
 ```bash
 python3 -m venv voicebot-env
-source voicebot-env/bin/activate  # Linux/macOS
-````
-
-### 2. Install required libraries
-
-```bash
+source voicebot-env/bin/activate
 pip install -r requirements.txt
 ```
 
-If you get an error with PyAudio, install PortAudio first:
+PyAudio needs PortAudio installed first on Linux:
 
 ```bash
 sudo apt install portaudio19-dev python3-pyaudio
 ```
 
----
-
-## ▶️ How to Run
-
-Make sure your microphone is working and then run:
+## Usage
 
 ```bash
-python voice_bot.py
+python main.py
 ```
 
-You will be greeted with a voice and prompted to speak a command.
+Speak a command after the greeting — e.g. "what's the time", "open Google", "search Wikipedia for photosynthesis", "take a note".
 
----
+## Limitations
 
-## 🎙️ Example Commands to Try
-
-* "Wikipedia Albert Einstein"
-* "Open Google"
-* "What is the time"
-* "Write a note"
-* "Shutdown"
-* "Restart"
-* "Exit"
-
----
-
-## 📁 File Structure
-
-```
-voice_chatbot_project/
-├── voice_bot.py         # Main Python script
-├── requirements.txt     # List of dependencies
-└── README.txt           # This file
-```
-
-
+Speech recognition depends on Google's API (requires an internet connection) and works best with clear English input. There's no wake-word detection — it listens for a single command per run rather than continuously.
