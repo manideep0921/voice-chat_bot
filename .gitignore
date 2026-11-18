@@ -1,0 +1,11 @@
+# Virtual environments
+voicebot-env/
+venv/
+.venv/
+# Python
+__pycache__/
+*.pyc
+# OS
+.DS_Store
+# Local env / secrets
+.env
